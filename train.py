@@ -18,7 +18,7 @@ discount_factor = 0.99
 tau = 1e-2
 buffer_size = 50000
 epsilon = 0.99
-decay_epsilon = 50000000*/3
+decay_epsilon = 50000000/3
 final_epsilon = 0.01
 
 num_epochs = 5000
