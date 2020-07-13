@@ -1,3 +1,3 @@
-# Power Grid Opeartor: A Reinforcement Learnign Approach
+# Power Grid Opeartor: A Reinforcement Learning Approach
 
 coming soon...
