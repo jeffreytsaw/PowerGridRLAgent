@@ -12,7 +12,7 @@ from RandomAgent import RandomAgent
 num_frames = 4
 batch_size = 32
 lr = 1e-5
-lr_decay_steps = 50000000*/3
+lr_decay_steps = 50000000/3
 lr_decay_rate = 0.95
 discount_factor = 0.99
 tau = 1e-2
