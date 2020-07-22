@@ -146,8 +146,7 @@ class DQNetAgent(AgentWithConverter):
               num_epochs,
               num_steps,
               soft_update_freq = 250,
-              hard_update_freq = 1000,
-              ):
+              hard_update_freq = 1000):
         
         #pre-training to fill buffer
         
@@ -286,8 +285,9 @@ class DQNetAgent(AgentWithConverter):
             # sanity check to ensure it's working
             if (epoch % 100 == 0):
                 print("Completed epoch {}".format(epoch))
+                print("Total steps: {}".format(total_steps))
         
-        return (epoch, losses, avg_losses, net_reward, alive)
+        return (epoch, total_steps, losses, avg_losses, net_reward, alive)
             
                 
         

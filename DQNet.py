@@ -54,7 +54,7 @@ class DQNet(object):
     #                           to bridge observation_size and action_size
     
     def construct_DQN(self):
-        input_layer = tfkl.Input(shape = (self.observation_size * self.num_frames,)
+        input_layer = tfkl.Input(shape = (self.observation_size * self.num_frames,))
         layer1 = tfkl.Dense(self.observation_size * self.num_frames)(input_layer)
         layer1 = tfka.relu(layer1, alpha = 0.01) #Leaky ReLU
         

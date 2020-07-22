@@ -12,17 +12,17 @@ from RandomAgent import RandomAgent
 num_frames = 4
 batch_size = 32
 lr = 1e-5
-lr_decay_steps = 50000000/3
+lr_decay_steps = 100000/4
 lr_decay_rate = 0.95
 discount_factor = 0.99
 tau = 1e-2
 buffer_size = 50000
 epsilon = 0.99
-decay_epsilon = 50000000/3
+decay_epsilon = 70000
 final_epsilon = 0.01
 
-num_epochs = 5000
-num_steps = 50000000
+num_epochs = 10000
+num_steps = 1000000
 soft_update_freq = -1
 hard_update_freq = 1000
 
@@ -54,6 +54,7 @@ def train(env, num_frames, batch_size, buffer_size,
         epochs, total_steps, losses, avg_losses, net_reward, alive = (
         DQAgent.learn(env, num_epochs, num_steps,
                      soft_update_freq, hard_update_freq))
+                     
         return epochs, total_steps, losses, avg_losses, net_reward, alive
 ## Wrapper Train for RandomAgent
 def train_random(env, num_epochs):
@@ -64,11 +65,12 @@ def train_random(env, num_epochs):
 ## Main function
 
 # Runs custom agent
-epochs, losses, avg_losses, net_reward, alive = (
+epochs, total_steps, losses, avg_losses, net_reward, alive = (
             train(env, num_frames, batch_size, buffer_size, lr, lr_decay_steps,
                     lr_decay_rate, epsilon, decay_epsilon, final_epsilon, 
                     discount_factor, tau))
 
+print("Running Baseline...")
 # runs random agent
 r_total_steps, r_losses, r_avg_losses, r_net_reward, r_alive = (
     train_random(env, epochs))
@@ -90,6 +92,6 @@ plt.plot(np.arange(epochs), avg_losses, 'r-')
 
 plt.figure(8)
 # total losses during training
-plt.plot(np.arange(num_steps), losses, 'r-')
+plt.plot(np.arange(total_steps), losses, 'r-')
 plt.show()
 
