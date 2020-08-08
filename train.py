@@ -7,6 +7,8 @@ import numpy as np
 
 from DQNet_Agent import DQNetAgent
 from RandomAgent import RandomAgent
+from grid2op.Reward import L2RPNReward
+
 
 ## Hyperparameters
 num_frames = 4
@@ -16,20 +18,20 @@ lr_decay_steps = 100000/4
 lr_decay_rate = 0.95
 discount_factor = 0.99
 tau = 1e-2
-buffer_size = 50000
+buffer_size = 70000
 epsilon = 0.99
-decay_epsilon = 70000
+decay_epsilon = 100000
 final_epsilon = 0.01
 
 num_epochs = 10000
-num_steps = 1000000
+num_steps = 1500000
 soft_update_freq = -1
 hard_update_freq = 1000
 
 
 env_name = "rte_case14_realistic"
 
-env = grid2op.make(env_name)
+env = grid2op.make(env_name, reward_class=L2RPNReward)
 
 ## Wrapper Train Function
 def train(env, num_frames, batch_size, buffer_size,

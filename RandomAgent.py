@@ -58,6 +58,7 @@ class RandomAgent(AgentWithConverter):
             curr_steps = 0
             total_loss = []
             env.reset()
+            self.done = False   
             
             while (not self.done):
                 # performs random action
@@ -73,7 +74,7 @@ class RandomAgent(AgentWithConverter):
                 
             alive.append(curr_steps)
             net_reward.append(total_reward) 
-            epoch+=1           
+            epoch+=1 
             
             
         return (total_steps, losses, avg_losses, net_reward, alive)
